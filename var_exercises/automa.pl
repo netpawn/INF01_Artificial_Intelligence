@@ -20,3 +20,7 @@ trans(3,e,0).
 % in cui la lista L è generata da un cammino che parte dallo stato iniziale e termina in uno stato
 % finale.
 
+gen(S, []):- final(S). 
+gen(S, [X|Y]):- trans(S, X, S2), gen(S2, Y).
+
+generates(L):- initial(S0), gen(S0, L).
